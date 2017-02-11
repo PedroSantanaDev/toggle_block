@@ -1,13 +1,13 @@
 <?php  defined("C5_EXECUTE") or die("Access Denied."); ?>
 
-<div class="panel-group">
+<div class="panel-group" id="accordion">
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
 
       	<?php  if (isset($title) && trim($title) != "") { ?>
-        	<a role="button" data-toggle="collapse" aria-expanded="false" href="#collapse-block_<?php echo $bID; ?>"><?php  echo h($title); ?>
-        		<i class="more-less glyphicon glyphicon-plus"></i>
+        	<a data-toggle="collapse" data-parent="#accordion"  href="#collapse-block_<?php echo $bID; ?>"><?php  echo h($title); ?>
+        		<span class="glyphicon pull-right glyphicon-plus"></span>
            	</a>
         <?php  } ?>
 
@@ -32,3 +32,10 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+	$('.collapse').on('shown.bs.collapse', function(){
+	$(this).parent().find(".glyphicon-plus").removeClass("glyphicon-plus").addClass("glyphicon-minus");
+	}).on('hidden.bs.collapse', function(){
+	$(this).parent().find(".glyphicon-minus").removeClass("glyphicon-minus").addClass("glyphicon-plus");
+	});
+</script>
