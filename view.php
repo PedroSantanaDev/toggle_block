@@ -6,7 +6,9 @@
       <h4 class="panel-title">
 
       	<?php  if (isset($title) && trim($title) != "") { ?>
-        	<a data-toggle="collapse" href="#collapse-block_<?php echo $bID; ?>"><?php  echo h($title); ?></a>
+        	<a role="button" data-toggle="collapse" aria-expanded="false" href="#collapse-block_<?php echo $bID; ?>"><?php  echo h($title); ?>
+        		<i class="more-less glyphicon glyphicon-plus"></i>
+           	</a>
         <?php  } ?>
 
       </h4>
@@ -26,7 +28,7 @@
     	</div>
     	<?php  } ?>
       </div>
-      <div class="panel-footer"></div>
+      <!-- <div class="panel-footer"></div> -->
     </div>
   </div>
 </div>
