@@ -4,27 +4,29 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" href="#collapse1">Collapsible panel</a>
+
+      	<?php  if (isset($title) && trim($title) != "") { ?>
+        	<a data-toggle="collapse" href="#collapse-block_<?php echo $bID; ?>"><?php  echo h($title); ?></a>
+        <?php  } ?>
+
       </h4>
     </div>
-    <div id="collapse1" class="panel-collapse collapse">
+    <div id="collapse-block_<?php echo $bID; ?>" class="panel-collapse collapse">
       <div class="panel-body">
-      <div class="col-md-4">
-      	 Panel Body
-      </div>
+
+      <?php  if ($image) { ?>
+	      <div class="col-md-4">
+	      	 <img src="<?php  echo $image->getURL(); ?>" alt="<?php  echo $image->getTitle(); ?>" class="image-responsive">
+	      </div>
+      	<?php } ?>
+
+      	<?php  if (isset($content) && trim($content) != "") { ?>
     	<div class="col-md-8">
-    		yyy
+    		<?php  echo $content; ?>
     	</div>
+    	<?php  } ?>
       </div>
-      <div class="panel-footer">Panel Footer</div>
+      <div class="panel-footer"></div>
     </div>
   </div>
 </div>
-
-
-<?php  if (isset($title) && trim($title) != "") { ?>
-    <?php  echo h($title); ?><?php  } ?>
-<?php  if ($image) { ?>
-    <img src="<?php  echo $image->getURL(); ?>" alt="<?php  echo $image->getTitle(); ?>"/><?php  } ?>
-<?php  if (isset($content) && trim($content) != "") { ?>
-    <?php  echo $content; ?><?php  } ?>
