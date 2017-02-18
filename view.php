@@ -1,7 +1,34 @@
 <?php  defined("C5_EXECUTE") or die("Access Denied."); ?>
 
+<?php  if (trim($blockStyle) != "") { ?>
+    
+<?php 
+$panel_style = "";
+switch($blockStyle) {
+case "1":
+    $panel_style = "panel-default";
+    break;
+case "2":
+    $panel_style = "panel-primary";
+    break;
+case "3":
+    $panel_style = "panel-success";
+    break;
+case "4":
+    $panel_style = "panel-info";
+    break;
+case "5":
+    $panel_style = "panel-warning";
+    break;
+case "6":
+    $panel_style = "panel-danger";
+    break;
+      } ?>
+<?php  } ?>
+
+
 <div class="panel-group" id="accordion">
-  <div class="panel panel-default">
+  <div class="panel <?= $panel_style; ?>">
     <div class="panel-heading">
       <h4 class="panel-title">
 

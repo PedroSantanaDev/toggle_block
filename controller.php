@@ -52,6 +52,17 @@ class Controller extends BlockController
             $this->set("image", false);
         }
         $this->set('content', LinkAbstractor::translateFrom($this->content));
+
+        $blockStyle_options = array(
+            '' => "-- " . t("None") . " --",
+            '1' => "Grey",
+            '2' => "Blue",
+            '3' => "Green",
+            '4' => "Light Blue",
+            '5' => "Light Brown",
+            '6' => "Red"
+        );
+        $this->set("blockStyle_options", $blockStyle_options);
     }
 
     public function add()
@@ -71,7 +82,21 @@ class Controller extends BlockController
         $this->requireAsset('core/file-manager');
         $this->requireAsset('redactor');
         $this->set('btFieldsRequired', $this->btFieldsRequired);
+        $this->set("blockStyle_options", array(
+                '' => "-- " . t("None") . " --",
+                '1' => "Grey",
+                '2' => "Blue",
+                '3' => "Green",
+                '4' => "Light Blue",
+                '5' => "Light Brown",
+                '6' => "Red"
+            )
+        );
+        $this->set('btFieldsRequired', $this->btFieldsRequired);
         $this->set('identifier_getString', Core::make('helper/validation/identifier')->getString(18));
+
+        
+       
     }
 
     public function save($args)
@@ -91,6 +116,9 @@ class Controller extends BlockController
         }
         if (in_array("content", $this->btFieldsRequired) && (trim($args["content"]) == "")) {
             $e->add(t("The %s field is required.", t("Content")));
+        }
+        if ((in_array("blockStyle", $this->btFieldsRequired) && (!isset($args["blockStyle"]) || trim($args["blockStyle"]) == "")) || (isset($args["blockStyle"]) && trim($args["blockStyle"]) != "" && !in_array($args["blockStyle"], array("1", "2", "3", "4", "5", "6")))) {
+            $e->add(t("The %s field has an invalid value.", t("Block Style")));
         }
         return $e;
     }

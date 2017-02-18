@@ -11,5 +11,6 @@
             <unsigned/>
         </field>
         <field name="content" type="X2"></field>
+        <field name="blockStyle" type="C"></field>
     </table>
 </schema>

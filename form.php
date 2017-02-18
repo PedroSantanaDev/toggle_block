@@ -26,3 +26,8 @@
     <?php  echo isset($btFieldsRequired) && in_array('content', $btFieldsRequired) ? '<small class="required">' . t('Required') . '</small>' : null; ?>
     <?php  echo Core::make('editor')->outputBlockEditModeEditor($view->field('content'), $content); ?>
 </div>
+<div class="form-group">
+    <?php  echo $form->label('blockStyle', t("Block Style")); ?>
+    <?php  echo isset($btFieldsRequired) && in_array('blockStyle', $btFieldsRequired) ? '<small class="required">' . t('Required') . '</small>' : null; ?>
+    <?php  echo $form->select($view->field('blockStyle'), $blockStyle_options, $blockStyle, array()); ?>
+</div>
